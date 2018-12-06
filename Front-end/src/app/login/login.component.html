@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <h1>
+                {{ title }}
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="../assets/img/user.png" />
+        <div class="alert alert-danger" *ngIf="error">verifer ton username et mot de passe</div>
+        <p id="profile-name" class="profile-name-card"></p>
+        <form  #AjoutForm=ngForm (ngSubmit)="onSubmit()"  class="form-signin">
+            <input type="text" name="usernames" id="usernames" class="form-control" placeholder="Login" required autofocus [(ngModel)]="form.usernames" >
+            <input type="password" name="Password" id="Password" class="form-control" placeholder="Mot de passe" required [(ngModel)]="form.Passwor">
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Connecter</button>
+        </form><!-- /form -->
+    </div><!-- /card-container -->
+</div><!-- /container -->

@@ -1,0 +1,15 @@
+.jours{
+    text-align:center;
+}
+.date{
+    text-align:center;
+    font-size:13px;
+}
+.horaire{
+    text-align:right;
+}
+
+td:hover{
+    cursor:pointer;
+    background:rgba(50, 151, 4, 0.829);;
+}

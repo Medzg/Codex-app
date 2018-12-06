@@ -1,0 +1,94 @@
+<app-admin>
+
+  <ng-container class="txt">
+
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+              <button mat-raised-button color="primary" (click)="onCreate()" class="btn-block float-md-right float-sm-left">Créer session</button>
+            </div>
+            <div class="col-md-4">
+              <button mat-raised-button color="primary" (click)="onEdit()" class="btn-block float-md-right float-sm-left">Modifier session</button>
+            </div>
+            <div class="col-md-4">
+              <button mat-raised-button color="warn" (click)="onDelete()" class="btn-block float-md-right float-sm-left">Supprimer session</button>
+            </div>
+          </div>
+        </div>
+        <br>
+      <div class="container-fluid">
+          <table class="table table-bordered">
+            <thead>
+              <tr class="jours">
+                <th></th>
+                <th>Lundi<br><label name="jour1">23/11</label></th>
+                <th>Mardi <br><label name="jour2">24/11</label></th>
+                <th>Mercredi <br><label name="jour3">25/11</label></th>
+                <th>jeudi <br><label name="jour4">26/11</label></th>
+                <th>Vendredi <br><label name="jour5">27/11</label></th>
+                <th>Samedi <br><label name="jour6">28/11</label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th (click)="horaire()" class="horaire" name="hSeance1">8h <br> 9h30</th>
+                <td (click)="event()" name="lundiSeance1"></td>
+                <td (click)="event()" name="mardiSeance1"></td>
+                <td (click)="event()" name="mercrediSeance1"></td>
+                <td (click)="event()" name="jeudiSeance1"></td>
+                <td (click)="event()" name="VendrediSeance1"></td>
+                <td (click)="event()" name="SamediSeance1"></td>
+              </tr>
+              <tr>
+                <th (click)="horaire()" class="horaire" name="hSeance2">9h40 <br> 11h10</th>
+                <td (click)="event()" name="lundiSeance2"></td>
+                <td (click)="event()" name="mardiSeance2"></td>
+                <td (click)="event()" name="mercrediSeance2"></td>
+                <td (click)="event()" name="jeudiSeance2"></td>
+                <td (click)="event()" name="VendrediSeance2"></td>
+                <td (click)="event()" name="SamediSeance2"></td>
+              </tr>
+              <tr>
+                <th (click)="horaire()" class="horaire" name="hSeance3">11h20 <br> 12h50</th>
+                <td (click)="event()" name="lundiSeance3"></td>
+                <td (click)="event()" name="mardiSeance3"></td>
+                <td (click)="event()" name="mercrediSeance3"></td>
+                <td (click)="event()" name="jeudiSeance3"></td>
+                <td (click)="event()" name="VendrediSeance3"></td>
+                <td (click)="event()" name="SamediSeance3"></td>
+              </tr>
+              <tr>
+                  <th (click)="horaire()" class="horaire" name="hSeance4">13h40 <br> 15h10</th>
+                  <td (click)="event()" name="lundiSeance4"></td>
+                  <td (click)="event()" name="mardiSeance4"></td>
+                  <td (click)="event()" name="mercrediSeance4"></td>
+                  <td (click)="event()" name="jeudiSeance4"></td>
+                  <td (click)="event()" name="VendrediSeance4"></td>
+                  <td (click)="event()" name="SamediSeance4"></td>
+              </tr>
+              <tr>
+                  <th (click)="horaire()" class="horaire" name="hSeance5">15h20 <br> 16h50</th>
+                  <td (click)="event()" name="lundiSeance5"></td>
+                  <td (click)="event()" name="mardiSeance5"></td>
+                  <td (click)="event()" name="mercrediSeance5"></td>
+                  <td (click)="event()" name="jeudiSeance5"></td>
+                  <td (click)="event()" name="VendrediSeance5"></td>
+                  <td (click)="event()" name="SamediSeance5"></td>
+              </tr>
+              <tr>
+                  <th (click)="horaire()" class="horaire" name="hSeance6">17h00 <br> 18h30</th>
+                  <td (click)="event()" name="lundiSeance6"></td>
+                  <td (click)="event()" name="mardiSeance6"></td>
+                  <td (click)="event()" name="mercrediSeance6"></td>
+                  <td (click)="event()" name="jeudiSeance6"></td>
+                  <td (click)="event()" name="VendrediSeance6"></td>
+                  <td (click)="event()" name="SamediSeance6"></td>
+              </tr>    
+            </tbody>
+          </table>
+        </div>
+
+  </ng-container>
+</app-admin>
+
+

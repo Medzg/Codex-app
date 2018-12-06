@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+  
+      <div class="col-md-6">
+          <img id="profile-img" class="img-fluid user" src="../../../../assets/img/user2.png" />
+      </div>
+  
+      <div class="col-md-6">
+        <h3> Modifer ce compte </h3>
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput="number" name="cin "placeholder="CIN" disabled>
+          </mat-form-field>
+  
+          <mat-form-field>
+              <input matInput="text" name="username" placeholder="Nom et prénom">
+          </mat-form-field>
+  
+          <mat-form-field>
+            <mat-select name="grade" placeholder="Grade">
+              <mat-option value="option">
+                Option
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <button mat-raised-button color="primary"class="btn-block">Modifier</button>
+          </div>
+          <div class="col-md-6">
+            <button mat-raised-button color="warn" class="btn-block" (click)="onClose()">Annuler</button>
+          </div>
+    </div>
+  </div>
