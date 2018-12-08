@@ -14,6 +14,8 @@ export class EditUserComponent implements OnInit {
     password : null,
     type : null
 };
+public success : boolean ;
+public error : boolean;
 
   constructor(public dialogRef: MatDialogRef< EditUserComponent>,private Methods : MethodsService) { }
 
@@ -26,10 +28,10 @@ export class EditUserComponent implements OnInit {
   onSubmit(){
     this.Methods.UpdateData(this.form.cin,this.form.username,this.form.password,this.form.type).subscribe(data=>{
       if(data){
-        console.log('it work');
+        this.success = true;
       }
       else{
-        console.log('nope');
+       this.error = false;
       }
     });
   }

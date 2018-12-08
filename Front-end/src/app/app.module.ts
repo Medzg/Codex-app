@@ -32,6 +32,8 @@ import { MethodsService } from './methods.service';
 import { ProfessorComponent } from './professor/professor.component';
 import { EditProfComponent } from './professor/edit-prof/edit-prof.component';
 import { CalendarProfComponent } from './professor/calendar-prof/calendar-prof.component';
+import { SuccessComponent } from './success/success.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { CalendarProfComponent } from './professor/calendar-prof/calendar-prof.c
     DeleteSessionComponent,
     ProfessorComponent,
     EditProfComponent,
-    CalendarProfComponent
+    CalendarProfComponent,
+    SuccessComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

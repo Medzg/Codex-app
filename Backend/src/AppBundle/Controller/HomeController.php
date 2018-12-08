@@ -140,7 +140,7 @@ class HomeController extends Controller{
             $response = array('code'=>'0',
                 'message'=>'this accoutn already existed'
                 );
-            return new JsonResponse($response,404);
+            return new JsonResponse($response,200);
 
         }
 
@@ -176,11 +176,11 @@ class HomeController extends Controller{
 
             return new JsonResponse($response,200);
         }
-        else {
+        else{
 
             $response = array('code'=>'0',
                 'messsage'=>'error updating');
-            return new JsonResponse($response,400);
+            return new JsonResponse($response,200);
 
         }
 

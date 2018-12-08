@@ -19,7 +19,7 @@ export class MethodsService {
        if(code == '1'){
          return true;
        }
-       else{
+       else if(code == '0'){
          return false;
        }
        }));
@@ -56,7 +56,7 @@ UpdateData(cin :number,username : string,password :string,type:string):Observabl
        if(code == '1'){
          return true;
        }
-       else{
+       else if (code == '0') {
          return false;
        }
 
