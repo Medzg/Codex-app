@@ -46,4 +46,24 @@ export class MethodsService {
   }));
 }
 
+UpdateData(cin :number,username : string,password :string,type:string):Observable<boolean>{
+  let headers = new Headers();
+  headers.append('content-type', 'application/x-www-form-urlencoded');
+  let result = JSON.stringify({'cin':cin,'username':username,'password':password,'type':type});
+  return this.http.post(this.uri+'update', result ,{headers : headers} )
+     .pipe(map((response: Response)=>{
+       let code = response.json().code;
+       if(code == '1'){
+         return true;
+       }
+       else{
+         return false;
+       }
+
+
+
+
+}));
+
+}
 }

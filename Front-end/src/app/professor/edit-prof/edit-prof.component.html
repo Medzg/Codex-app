@@ -13,15 +13,15 @@
       <h3> Modifier compte </h3>
       <div class="example-container">
         <mat-form-field>
-          <input matInput="number" name="cin "placeholder="CIN" disabled [(ngModel)]="form.cin">
+          <input matInput="number" name="cin "placeholder="CIN" disabled [(ngModel)]="form.cin">14789678
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput="text" name="username" placeholder="Nom et prénom" [(ngModel)]="form.user" > 
+            <input matInput="text" name="username" placeholder="Nom et prénom" [(ngModel)]="form.user" > prof
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput="password" [type]="hide ? 'password' : 'text'" name="password" placeholder="Mot de passe"[(ngModel)]="form.password" >
+          <input matInput="password" [type]="hide ? 'password' : 'text'" name="password" placeholder="Mot de passe"[(ngModel)]="form.password" >123
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
 

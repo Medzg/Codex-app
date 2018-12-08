@@ -150,7 +150,7 @@ class HomeController extends Controller{
 
     /**
      * @Route ("api/update",name="update")
-     * @Method({"PUT"})
+     * @Method({"POST"})
      */
 
     public function  UpdateAction(Request $request){
@@ -158,36 +158,31 @@ class HomeController extends Controller{
         $var = $request->getContent();
         $data = json_decode($var);
         $em = $this->getDoctrine()->getManager();
+        /**
+         * $account User
+         */
+        $account = $em->getRepository(User::class)->findOneBy(["cin"=>$data->cin]);
+        if($account != null){
 
-        $account = $em->getRepository(User::class)->find($data->id);
-        if(empty($account)){
+            $account->setUsername($data->username);
+            $account->setPassword($data->password);
+            $account->setType($data->type);
+            $em->persist($account);
+            $em->flush();
             $response = array(
-                'code '=>-1,
-                'Message'=>'no user found'
+                'code'=>'1',
+                'message'=>'user update'
             );
-            return new JsonResponse($response,404);
-        }
 
-        $account->setCin($data->cin);
-        $account->setUsername($data->username);
-        $account->setPassword($data->password);
-        $account->setType($data->type);
-        $em->persist($account);
-        if($em->flush()){
-            $response = array(
-                'code '=>1,
-                'Message'=>'no user found'
-            );
             return new JsonResponse($response,200);
         }
-        else{
-            $response = array(
-                'code '=>0,
-                'Message'=>'username or cin already used'
-            );
-            return new JsonResponse($response,404);
-        }
+        else {
 
+            $response = array('code'=>'0',
+                'messsage'=>'error updating');
+            return new JsonResponse($response,400);
+
+        }
 
 
 

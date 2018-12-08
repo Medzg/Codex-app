@@ -34,6 +34,7 @@ users : Array<MyData> =[];
   
 
   constructor(public dialog: MatDialog , private table : TableService) {}
+  
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
