@@ -11,7 +11,7 @@ export class SecurityService {
   canActivate() {
     if (localStorage.getItem('currentUser')) {
       // logged in so return true
-      console.log( JSON.parse(localStorage.getItem('currentUser')).username );
+      
       return true;
     }
     console.log(localStorage.getItem('currentUser'));

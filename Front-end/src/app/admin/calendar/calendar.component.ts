@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog,MatDialogConfig } from '@angular/material';
 import { AddEventComponent } from './add-event/add-event.component';
 import { EditTimeComponent } from './edit-time/edit-time.component';
-import { EditSessionComponent } from './edit-session/edit-session.component';
 import { NewSessionComponent } from './new-session/new-session.component';
 import { DeleteSessionComponent } from './delete-session/delete-session.component';
+import { EditDateComponent } from './edit-date/edit-date.component';
+import {MethodsService} from '../../methods.service';
 
 @Component({
   selector: 'app-calendar',
@@ -12,10 +13,24 @@ import { DeleteSessionComponent } from './delete-session/delete-session.componen
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  public rest ={
+    id : null,
+    type : null,
+    dateD : null,
+    dateF : null
 
-  constructor(public dialog: MatDialog) {}
+  }
+  
+  constructor(public dialog: MatDialog, private meth:MethodsService)  {}
 
+  
   ngOnInit() {
+
+    let type = this.meth.GetType().subscribe(res=>{
+
+      
+    });
+ 
   }
 
   event(){
@@ -34,20 +49,21 @@ export class CalendarComponent implements OnInit {
     this.dialog.open(EditTimeComponent);
   }
 
+
+  date(){
+    const dialogConfig= new MatDialogConfig();
+    dialogConfig.disableClose=true;
+    dialogConfig.autoFocus=true; 
+    dialogConfig.width="100%";
+    this.dialog.open(EditDateComponent);
+  }
+
   onCreate(){
     const dialogConfig= new MatDialogConfig();
     dialogConfig.disableClose=true;
     dialogConfig.autoFocus=true; 
     dialogConfig.width="100%";
     this.dialog.open(NewSessionComponent);
-  }
-
-  onEdit(){
-    const dialogConfig= new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus=true; 
-    dialogConfig.width="100%";
-    this.dialog.open(EditSessionComponent);
   }
 
   onDelete(){

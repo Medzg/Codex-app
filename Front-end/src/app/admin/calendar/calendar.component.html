@@ -4,13 +4,11 @@
 
       <div class="container-fluid">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <button mat-raised-button color="primary" (click)="onCreate()" class="btn-block float-md-right float-sm-left">Créer session</button>
             </div>
-            <div class="col-md-4">
-              <button mat-raised-button color="primary" (click)="onEdit()" class="btn-block float-md-right float-sm-left">Modifier session</button>
-            </div>
-            <div class="col-md-4">
+            
+            <div class="col-md-6">
               <button mat-raised-button color="warn" (click)="onDelete()" class="btn-block float-md-right float-sm-left">Supprimer session</button>
             </div>
           </div>
@@ -20,74 +18,146 @@
           <table class="table table-bordered">
             <thead>
               <tr class="jours">
-                <th></th>
-                <th>Lundi<br><label name="jour1">23/11</label></th>
-                <th>Mardi <br><label name="jour2">24/11</label></th>
-                <th>Mercredi <br><label name="jour3">25/11</label></th>
-                <th>jeudi <br><label name="jour4">26/11</label></th>
-                <th>Vendredi <br><label name="jour5">27/11</label></th>
-                <th>Samedi <br><label name="jour6">28/11</label></th>
+                <td>Jours<br>Horaire</td>
+                <th name="jour1" (click)="date()">Lundi<br>23/11</th>
+                <th name="jour2" (click)="date()">Mardi<br>24/11</th>
+                <th name="jour3" (click)="date()">Mercredi<br>25/11</th>
+                <th name="jour4" (click)="date()">jeudi<br>26/11</th>
+                <th name="jour5" (click)="date()">Vendredi<br>27/11</th>
+                <th name="jour6" (click)="date()">Samedi<br>28/11</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th (click)="horaire()" class="horaire" name="hSeance1">8h <br> 9h30</th>
-                <td (click)="event()" name="lundiSeance1"></td>
-                <td (click)="event()" name="mardiSeance1"></td>
-                <td (click)="event()" name="mercrediSeance1"></td>
-                <td (click)="event()" name="jeudiSeance1"></td>
-                <td (click)="event()" name="VendrediSeance1"></td>
-                <td (click)="event()" name="SamediSeance1"></td>
+                <td (click)="event()" name="jour1Seance1"></td>
+                <td (click)="event()" name="jour2Seance1"></td>
+                <td (click)="event()" name="jour3Seance1"></td>
+                <td (click)="event()" name="jour4Seance1"></td>
+                <td (click)="event()" name="jour5Seance1"></td>
+                <td (click)="event()" name="jour6Seance1"></td>
               </tr>
               <tr>
                 <th (click)="horaire()" class="horaire" name="hSeance2">9h40 <br> 11h10</th>
-                <td (click)="event()" name="lundiSeance2"></td>
-                <td (click)="event()" name="mardiSeance2"></td>
-                <td (click)="event()" name="mercrediSeance2"></td>
-                <td (click)="event()" name="jeudiSeance2"></td>
-                <td (click)="event()" name="VendrediSeance2"></td>
-                <td (click)="event()" name="SamediSeance2"></td>
+                <td (click)="event()" name="jour1Seance2"></td>
+                <td (click)="event()" name="jour2Seance2"></td>
+                <td (click)="event()" name="jour3Seance2"></td>
+                <td (click)="event()" name="jour4Seance2"></td>
+                <td (click)="event()" name="jour5Seance2"></td>
+                <td (click)="event()" name="jour6Seance2"></td>
               </tr>
               <tr>
                 <th (click)="horaire()" class="horaire" name="hSeance3">11h20 <br> 12h50</th>
-                <td (click)="event()" name="lundiSeance3"></td>
-                <td (click)="event()" name="mardiSeance3"></td>
-                <td (click)="event()" name="mercrediSeance3"></td>
-                <td (click)="event()" name="jeudiSeance3"></td>
-                <td (click)="event()" name="VendrediSeance3"></td>
-                <td (click)="event()" name="SamediSeance3"></td>
+                <td (click)="event()" name="jour1Seance3"></td>
+                <td (click)="event()" name="jour2Seance3"></td>
+                <td (click)="event()" name="jour3Seance3"></td>
+                <td (click)="event()" name="jour4Seance3"></td>
+                <td (click)="event()" name="jour5Seance3"></td>
+                <td (click)="event()" name="jour6Seance3"></td>
               </tr>
               <tr>
                   <th (click)="horaire()" class="horaire" name="hSeance4">13h40 <br> 15h10</th>
-                  <td (click)="event()" name="lundiSeance4"></td>
-                  <td (click)="event()" name="mardiSeance4"></td>
-                  <td (click)="event()" name="mercrediSeance4"></td>
-                  <td (click)="event()" name="jeudiSeance4"></td>
-                  <td (click)="event()" name="VendrediSeance4"></td>
-                  <td (click)="event()" name="SamediSeance4"></td>
+                  <td (click)="event()" name="jour1Seance4"></td>
+                  <td (click)="event()" name="jour2Seance4"></td>
+                  <td (click)="event()" name="jour3Seance4"></td>
+                  <td (click)="event()" name="jour4Seance4"></td>
+                  <td (click)="event()" name="jour5Seance4"></td>
+                  <td (click)="event()" name="jour6Seance4"></td>
               </tr>
               <tr>
                   <th (click)="horaire()" class="horaire" name="hSeance5">15h20 <br> 16h50</th>
-                  <td (click)="event()" name="lundiSeance5"></td>
-                  <td (click)="event()" name="mardiSeance5"></td>
-                  <td (click)="event()" name="mercrediSeance5"></td>
-                  <td (click)="event()" name="jeudiSeance5"></td>
-                  <td (click)="event()" name="VendrediSeance5"></td>
-                  <td (click)="event()" name="SamediSeance5"></td>
+                  <td (click)="event()" name="jour1Seance5"></td>
+                  <td (click)="event()" name="jour2Seance5"></td>
+                  <td (click)="event()" name="jour3Seance5"></td>
+                  <td (click)="event()" name="jour4Seance5"></td>
+                  <td (click)="event()" name="jour5Seance5"></td>
+                  <td (click)="event()" name="jour6Seance5"></td>
               </tr>
               <tr>
                   <th (click)="horaire()" class="horaire" name="hSeance6">17h00 <br> 18h30</th>
-                  <td (click)="event()" name="lundiSeance6"></td>
-                  <td (click)="event()" name="mardiSeance6"></td>
-                  <td (click)="event()" name="mercrediSeance6"></td>
-                  <td (click)="event()" name="jeudiSeance6"></td>
-                  <td (click)="event()" name="VendrediSeance6"></td>
-                  <td (click)="event()" name="SamediSeance6"></td>
+                  <td (click)="event()" name="jour1Seance6"></td>
+                  <td (click)="event()" name="jour2Seance6"></td>
+                  <td (click)="event()" name="jour3Seance6"></td>
+                  <td (click)="event()" name="jour4Seance6"></td>
+                  <td (click)="event()" name="jour5Seance6"></td>
+                  <td (click)="event()" name="jour6Seance6"></td>
               </tr>    
             </tbody>
           </table>
         </div>
 
+
+        <div class="container-fluid" *ngIf="">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="week2Jjours">
+                  <td>Jours<br>Horaire</td>
+                  <th name="week2Jour1" (click)="date()">Lundi<br>23/11</th>
+                  <th name="week2Jour2" (click)="date()">Mardi<br>24/11</th>
+                  <th name="week2Jour3" (click)="date()">Mercredi<br>25/11</th>
+                  <th name="week2Jour4" (click)="date()">jeudi<br>26/11</th>
+                  <th name="week2Jour5" (click)="date()">Vendredi<br>27/11</th>
+                  <th name="week2Jour6" (click)="date()">Samedi<br>28/11</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th (click)="horaire()" class="horaire" name="week2hSeance1">8h <br> 9h30</th>
+                  <td (click)="event()" name="week2Jour1Seance1"></td>
+                  <td (click)="event()" name="week2Jour2Seance1"></td>
+                  <td (click)="event()" name="week2Jour3Seance1"></td>
+                  <td (click)="event()" name="week2Jour4Seance1"></td>
+                  <td (click)="event()" name="week2Jour5Seance1"></td>
+                  <td (click)="event()" name="week2Jour6Seance1"></td>
+                </tr>
+                <tr>
+                  <th (click)="horaire()" class="horaire" name="week2hSeance2">9h40 <br> 11h10</th>
+                  <td (click)="event()" name="week2Jour1Seance2"></td>
+                  <td (click)="event()" name="week2Jour2Seance2"></td>
+                  <td (click)="event()" name="week2Jour3Seance2"></td>
+                  <td (click)="event()" name="week2Jour4Seance2"></td>
+                  <td (click)="event()" name="week2Jour5Seance2"></td>
+                  <td (click)="event()" name="week2Jour6Seance2"></td>
+                </tr>
+                <tr>
+                  <th (click)="horaire()" class="horaire" name="week2hSeance3">11h20 <br> 12h50</th>
+                  <td (click)="event()" name="week2Jour1Seance3"></td>
+                  <td (click)="event()" name="week2Jour2Seance3"></td>
+                  <td (click)="event()" name="week2Jour3Seance3"></td>
+                  <td (click)="event()" name="week2Jour4Seance3"></td>
+                  <td (click)="event()" name="week2Jour5Seance3"></td>
+                  <td (click)="event()" name="week2Jour6Seance3"></td>
+                </tr>
+                <tr>
+                    <th (click)="horaire()" class="horaire" name="week2hSeance4">13h40 <br> 15h10</th>
+                    <td (click)="event()" name="week2Jour1Seance4"></td>
+                    <td (click)="event()" name="week2Jour2Seance4"></td>
+                    <td (click)="event()" name="week2Jour3Seance4"></td>
+                    <td (click)="event()" name="week2Jour4Seance4"></td>
+                    <td (click)="event()" name="week2Jour5Seance4"></td>
+                    <td (click)="event()" name="week2Jour6Seance4"></td>
+                </tr>
+                <tr>
+                    <th (click)="horaire()" class="horaire" name="week2hSeance5">15h20 <br> 16h50</th>
+                    <td (click)="event()" name="week2Jour1Seance5"></td>
+                    <td (click)="event()" name="week2Jour2Seance5"></td>
+                    <td (click)="event()" name="week2Jour3Seance5"></td>
+                    <td (click)="event()" name="week2Jour4Seance5"></td>
+                    <td (click)="event()" name="week2Jour5Seance5"></td>
+                    <td (click)="event()" name="week2Jour6Seance5"></td>
+                </tr>
+                <tr>
+                    <th (click)="horaire()" class="horaire" name="week2hSeance6">17h00 <br> 18h30</th>
+                    <td (click)="event()" name="week2Jour1Seance6"></td>
+                    <td (click)="event()" name="week2Jour2Seance6"></td>
+                    <td (click)="event()" name="week2Jour3Seance6"></td>
+                    <td (click)="event()" name="week2Jour4Seance6"></td>
+                    <td (click)="event()" name="week2Jour5Seance6"></td>
+                    <td (click)="event()" name="week2Jour6Seance6"></td>
+                </tr>    
+              </tbody>
+            </table>
+          </div>
   </ng-container>
 </app-admin>
 

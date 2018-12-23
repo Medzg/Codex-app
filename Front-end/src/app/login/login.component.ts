@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
     this.GardSerService.login(this.form.usernames,this.form.Passwor).subscribe(res=>{
 
       if(res =='A'){
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/calendrier']);
       }
       else if(res == 'P'){
-        this.router.navigate(['/prof']);
+        this.router.navigate(['/prof/calendar']);
       }
       else{
         this.error = "check your user name and passowrd";

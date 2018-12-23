@@ -2,31 +2,24 @@
     <div class="row">
   
       <div class="col-md-6">
-          <img id="profile-img" class="img-fluid user" src="../../../../assets/img/user2.png" />
+          <img id="profile-img" class="img-fluid pic" src="../../../../assets/img/user2.png" />
       </div>
   
       <div class="col-md-6">
         <h3> Modifer ce compte </h3>
         <div class="example-container">
           <mat-form-field>
-            <input matInput="number" name="cin "placeholder="CIN" [(ngModel)]='form.cin'>
+            <input matInput="number" name="cin "placeholder="CIN" disabled>
           </mat-form-field>
   
           <mat-form-field>
-              <input matInput="text" name="username" placeholder="Nom et prénom" [(ngModel)]='form.username'>
+              <input matInput="text" name="username" placeholder="Nom et prénom">
           </mat-form-field>
-
-          <mat-form-field>
-            <input matInput="text" name="password" placeholder="password" [(ngModel)]='form.password'>
-        </mat-form-field>
-
+  
           <mat-form-field>
             <mat-select name="grade" placeholder="Grade">
-              <mat-option value="option"  (click)="getValue($event)">
-                A
-              </mat-option>
-              <mat-option value="option"  (click)="getValue($event)">
-                P
+              <mat-option value="option">
+                Option
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -36,17 +29,10 @@
     <br>
     <div class="row">
         <div class="col-md-6">
-            <button mat-raised-button color="primary"class="btn-block" (click)="onSubmit()">Modifier</button>
+            <button mat-raised-button color="primary"class="btn-block">Modifier</button>
           </div>
           <div class="col-md-6">
             <button mat-raised-button color="warn" class="btn-block" (click)="onClose()">Annuler</button>
           </div>
     </div>
   </div>
-  <div *ngIf="success">
-    <app-success></app-success>
-  </div>
-  <div *ngIf="error" >
-      <app-error></app-error>
-    
-    </div>

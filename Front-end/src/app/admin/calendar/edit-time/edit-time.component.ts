@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-edit-time',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditTimeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<EditTimeComponent>) { }
 
   ngOnInit() {
   }
 
+  onClose() {
+    this.dialogRef.close();
+  }
 }

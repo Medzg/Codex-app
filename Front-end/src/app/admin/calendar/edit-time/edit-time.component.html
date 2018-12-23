@@ -1,3 +1,30 @@
-<p>
-  edit-time works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-6">
+        <img id="profile-img" class="img-fluid pic" src="../../../../assets/img/horloge.png" />
+    </div>
+
+    <div class="col-md-6">
+      <h3> Modifier l'horaire </h3>
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput="text" name="heureDebut "placeholder="Heure de debut">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput="text" name="heureFin" placeholder="Heure de fin">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-6">
+          <button mat-raised-button color="primary"class="btn-block">Modifier</button>
+        </div>
+        <div class="col-md-6">
+          <button mat-raised-button color="warn" class="btn-block" (click)="onClose()">Annuler</button>
+        </div>
+  </div>
+</div>

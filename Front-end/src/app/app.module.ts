@@ -20,7 +20,6 @@ import { CalendarComponent } from './admin/calendar/calendar.component';
 import { AddEventComponent } from './admin/calendar/add-event/add-event.component';
 import { EditTimeComponent } from './admin/calendar/edit-time/edit-time.component';
 import { NewSessionComponent } from './admin/calendar/new-session/new-session.component';
-import { EditSessionComponent } from './admin/calendar/edit-session/edit-session.component';
 import { DeleteSessionComponent } from './admin/calendar/delete-session/delete-session.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
@@ -32,8 +31,7 @@ import { MethodsService } from './methods.service';
 import { ProfessorComponent } from './professor/professor.component';
 import { EditProfComponent } from './professor/edit-prof/edit-prof.component';
 import { CalendarProfComponent } from './professor/calendar-prof/calendar-prof.component';
-import { SuccessComponent } from './success/success.component';
-import { ErrorComponent } from './error/error.component';
+import { EditDateComponent } from './admin/calendar/edit-date/edit-date.component';
 
 @NgModule({
   declarations: [
@@ -49,13 +47,11 @@ import { ErrorComponent } from './error/error.component';
     AddEventComponent,
     EditTimeComponent,
     NewSessionComponent,
-    EditSessionComponent,
     DeleteSessionComponent,
     ProfessorComponent,
     EditProfComponent,
     CalendarProfComponent,
-    SuccessComponent,
-    ErrorComponent
+    EditDateComponent
   ],
   imports: [
     BrowserModule,
@@ -84,8 +80,9 @@ import { ErrorComponent } from './error/error.component';
     AddEventComponent,
     EditTimeComponent,
     NewSessionComponent,
-    EditSessionComponent,
-    DeleteSessionComponent
+    DeleteSessionComponent,
+    EditDateComponent,
+    AddEventComponent
   ]
 })
 export class AppModule { }

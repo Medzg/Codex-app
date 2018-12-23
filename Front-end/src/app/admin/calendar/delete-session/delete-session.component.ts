@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-delete-session',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteSessionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<DeleteSessionComponent>) { }
 
   ngOnInit() {
+  }
+
+  onClose() {
+    this.dialogRef.close();
   }
 
 }

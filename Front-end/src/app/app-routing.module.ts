@@ -12,11 +12,17 @@ import { EditProfComponent } from './professor/edit-prof/edit-prof.component';
 
 const appRoutes: Routes = [
     {
-      path: 'login',
+      path: '',
         component: LoginComponent,
        
 
     },
+    {
+        path: 'login',
+          component: LoginComponent,
+         
+  
+      },
     {
         path: 'admin',
         children: [
@@ -45,18 +51,21 @@ const appRoutes: Routes = [
         children :[
             {
                 path : '',
-                component : ProfessorComponent
+                component : ProfessorComponent,
+                canActivate : [SecurityService]
                 
             },
             {
                 path : 'calendar',
-                component : CalendarProfComponent
+                component : CalendarProfComponent,
+                canActivate : [SecurityService]
                 
 
             },
             {
                 path : 'modifier',
-                component : EditProfComponent
+                component : EditProfComponent,
+                canActivate : [SecurityService]
                
             }
 

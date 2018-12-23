@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb5e33ee-a79f-456b-9733-c0dd39bc6543" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/HomeController.php" afterDir="false" />
-    </list>
+    <list default="true" id="fb5e33ee-a79f-456b-9733-c0dd39bc6543" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +15,7 @@
     <session id="1817805952">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.117" value="1" />
           <entry key="project.open.time.23" value="1" />
@@ -76,7 +74,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="315">
               <caret line="178" column="12" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="12" />
             </state>
           </provider>
@@ -206,10 +204,11 @@
       <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="-5" />
-    <option name="width" value="1280" />
-    <option name="height" value="961" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1506" />
+    <option name="y" value="117" />
+    <option name="width" value="1270" />
+    <option name="height" value="576" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -325,12 +324,12 @@
       <workItem from="1544025345906" duration="4248000" />
       <workItem from="1544126793609" duration="4296000" />
       <workItem from="1544288927986" duration="1710000" />
-      <workItem from="1544294388419" duration="1812000" />
+      <workItem from="1544294388419" duration="2059000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48535000" />
+    <option name="totallyTimeSpent" value="48782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1280" height="931" extended-state="6" />
@@ -445,7 +444,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="315">
           <caret line="178" column="12" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="12" />
         </state>
       </provider>

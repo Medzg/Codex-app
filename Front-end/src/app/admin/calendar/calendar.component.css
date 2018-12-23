@@ -11,10 +11,20 @@
 
 .horaire:hover{
     cursor:pointer;
-    background:rgba(35, 20, 241, 0.747)
+    background:rgb(63, 81, 181)
 }
 
 td:hover{
     cursor:pointer;
-    background:rgba(239, 255, 8, 0.801);;
+    background:rgba(239, 255, 8, 0.801);
+}
+
+.jours th:hover{
+    cursor:pointer;
+    background:rgb(63, 81, 181)
+}
+
+.jours td:hover{
+    cursor:context-menu;
+    background: rgba(0,0,0,0)
 }

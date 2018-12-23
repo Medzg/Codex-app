@@ -16,16 +16,14 @@ export class AddUserComponent implements OnInit {
     password : null,
     type : null
 };
-public sucess : boolean ;
-public error : boolean;
 onSubmit(){
    this.methodsService.Ajouter(this.form.cin,this.form.username,this.form.password,this.form.type).subscribe(res=>{
      if(res){
-      this.sucess = true;
+       console.log('yes');
 
      }
      else{
-       this.error = true;
+       console.log("nope bitch");
      }
    });
   

@@ -23,6 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine;
+use AppBundle\Entity\seesion;
 
 
 class HomeController extends Controller{
@@ -240,6 +241,56 @@ class HomeController extends Controller{
 
 
 
+
+    }
+
+    /**
+     * @Route("api/createSes",name="creates")
+     * @Method({"POST"})
+     */
+    public function CreateSes(Request $request){
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+        $event = new seesion();
+        $event->setType($Data->type);
+        $event->setDateD($Data->DateD);
+        $event->setDateF($Data->DateF);
+        $em->persist($event);
+        $em->flush();
+
+        $response = array(
+            'code'=>'1',
+            'message'=>'seesion created'
+        );
+        return new JsonResponse($response,200);
+
+    }
+    /**
+     *@Route("api/getSes",name="getSes")
+     * @Method({"GET"})
+     */
+    public function GetSessionAction(){
+        $em = $this->getDoctrine()->getManager();
+        $ses = $em->getRepository(seesion::class)->findAll();
+        if(!$ses){
+            $response = array(
+                'code'=>'0',
+                "message"=>"pas session"
+            );
+            return new JsonResponse($response,200);
+        }
+        else{
+            $data = $this->get('jms_serializer')->serialize($ses,'json');
+            
+        
+        $response= array(
+            'code'=> 1,
+            'message'=>$data
+        );
+        return new JsonResponse($response,200);
+        }
 
     }
 }

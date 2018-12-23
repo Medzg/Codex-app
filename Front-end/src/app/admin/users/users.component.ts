@@ -34,8 +34,9 @@ users : Array<MyData> =[];
   
 
   constructor(public dialog: MatDialog , private table : TableService) {}
-  
-
+ applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -73,11 +74,14 @@ users : Array<MyData> =[];
 }
 
 export class UserDataSource extends DataSource<any> {
+  filter: string;
   constructor(private  TableService : TableService) {
     super();
   }
   connect(): Observable<MyData[]> {
     return this.TableService.getPost();
 }
+
+
 disconnect() {}
 }
