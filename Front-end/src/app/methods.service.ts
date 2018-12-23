@@ -70,4 +70,19 @@ AjouterSes (DateD:string,DateF:string,type:string):Observable<boolean>{
      }));
 
 }
+AjouterSea(nbSalle :string,nbrRes:string,cin:Array<string> ):Observable<boolean>{
+  let headers = new Headers();
+  headers.append('content-type', 'application/x-www-form-urlencoded');
+  let send = JSON.stringify({'nbSalle':nbSalle,'nbRes':nbrRes,'cin':cin});
+  return this.http.post(this.uri+'createSeas',send,{headers:headers}).pipe(map((response:Response)=>{
+    let code = response.json().code;
+    if(code=='1'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }));
+
+}
 }

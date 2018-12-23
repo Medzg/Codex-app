@@ -14,6 +14,8 @@ header('Access-Control-Max-Age: 100000');
 header('Access-Control-Allow-Headers:  Content-Type, Authorization, X-Requested-With');
 
 
+use AppBundle\Entity\SCin;
+use AppBundle\Entity\Seance;
 use AppBundle\Entity\Test;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -293,4 +295,28 @@ class HomeController extends Controller{
         }
 
     }
+    /**
+     * @Route("api/createSeas",name="createSeance")
+     * @Method({"POST"})
+     */
+    public function CreateSeanceAction(Request $request){
+
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $sean = new Seance();
+        $sean->setNbResp($Data->nbRes);
+        $sean->setNbSalle($Data->nbSalle);
+        $cins = $Data->cin;
+         foreach ($cins as $c){
+             $obj = new SCin();
+
+        }
+
+
+
+    }
+
 }

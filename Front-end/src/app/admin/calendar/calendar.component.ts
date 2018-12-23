@@ -30,9 +30,14 @@ export class CalendarComponent implements OnInit {
 
       
     });
- 
-  }
 
+  }
+  public name = null;
+  value = '';
+  event2(event:any){
+    this.name = event.target.id;
+    console.log(name)
+    }
   event(){
     const dialogConfig= new MatDialogConfig();
     dialogConfig.disableClose=true;

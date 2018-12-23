@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,9 +32,45 @@ class Seance
     /**
      * @var string
      *
+     * @ORM\Column(name="jourS", type="string", length=255)
+     */
+
+
+    private $JourSeance;
+
+    /**
+     * @return string
+     */
+    public function getJourSeance()
+    {
+        return $this->JourSeance;
+    }
+
+    /**
+     * @param string $JourSeance
+     */
+    public function setJourSeance($JourSeance)
+    {
+        $this->JourSeance = $JourSeance;
+    }
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nbResp", type="string", length=255)
      */
     private $nbResp;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SCin",mappedBy="sID",orphanRemoval=true)
+     */
+
+    private $scin;
+
+    public function __construct()
+    {
+        $this->scin = new ArrayCollection();
+    }
 
 
     /**
@@ -41,6 +78,8 @@ class Seance
      *
      * @return int
      */
+
+
     public function getId()
     {
         return $this->id;
