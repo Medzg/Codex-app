@@ -46,12 +46,18 @@ export class MethodsService {
         return x;
   }));
 }
-GetType(){
-  let index = 0
+GetType():Observable<string>{
+  
   return this.http.get(this.uri+'getSes').pipe(map((response:Response)=>{
     let data = response.json();
-    if(data.code == '1'){
-      console.log(data.message(index).type);
+    if(data.code == 1){
+       let res = data.message;
+      return res
+      
+    }
+    else{
+     let res  = 'not';
+      return res;
     }
   }))
 

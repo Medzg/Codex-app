@@ -25,20 +25,29 @@ export class CalendarComponent implements OnInit {
   }
 
   typeSes :boolean ;
+  test : string;
   
   constructor(public dialog: MatDialog, private meth:MethodsService,public j :jourN,public monses:GetSes)  {}
 
   
   ngOnInit() {
 
-  this.meth.GetType();
+  this.meth.GetType().subscribe(res=>{
+    if(res!='not'){
+      if(res == 'DS'){
+        this.typeSes = false;
+      }
+      else{
+        this.typeSes = true;
+      }
+      
+      
+    
+    }
+  });
+  
  
-if(this.monses.type == 'DS'){
-  this.typeSes = false;
-}
-else{
-  this.typeSes = true;
-}
+
 
 
 

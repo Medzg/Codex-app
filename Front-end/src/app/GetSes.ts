@@ -1,4 +1,4 @@
 export class GetSes{
 
-    type : string = '';
+    type : string ;
 }

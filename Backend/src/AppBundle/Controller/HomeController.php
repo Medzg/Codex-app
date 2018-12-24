@@ -276,6 +276,10 @@ class HomeController extends Controller{
     public function GetSessionAction(){
         $em = $this->getDoctrine()->getManager();
         $ses = $em->getRepository(seesion::class)->findAll();
+        $type = '';
+        foreach ($ses as $s){
+            $type = $s->getType();
+        }
         if(!$ses){
             $response = array(
                 'code'=>'0',
@@ -284,12 +288,12 @@ class HomeController extends Controller{
             return new JsonResponse($response,200);
         }
         else{
-            $data = $this->get('jms_serializer')->serialize($ses,'json');
+
             
         
         $response= array(
             'code'=> 1,
-            'message'=>json_decode($data)
+            'message'=>$type
         );
         return new JsonResponse($response,200);
         }
