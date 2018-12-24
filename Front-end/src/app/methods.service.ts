@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, Response, URLSearchParams} from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GetSes } from './GetSes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MethodsService {
   private uri = 'http://127.0.0.1:8000/api/';
-  constructor(private http:Http) { }
+  constructor(private http:Http,public GetS : GetSes) { }
   Ajouter (cin,username:string,password:string,type:string):Observable<boolean>{
     let headers = new Headers();
     headers.append('content-type', 'application/x-www-form-urlencoded');
@@ -45,11 +46,14 @@ export class MethodsService {
         return x;
   }));
 }
-GetType():Observable<object>{
-  return this.http.get(this.uri+"getSes").pipe(map(res =>{
-
-    return res.json().message
-  }));
+GetType(){
+  let index = 0
+  return this.http.get(this.uri+'getSes').pipe(map((response:Response)=>{
+    let data = response.json();
+    if(data.code == '1'){
+      console.log(data.message(index).type);
+    }
+  }))
 
 }
 
@@ -70,10 +74,10 @@ AjouterSes (DateD:string,DateF:string,type:string):Observable<boolean>{
      }));
 
 }
-AjouterSea(nbSalle :string,nbrRes:string,cin:Array<string> ):Observable<boolean>{
+AjouterSea(nbSalle :string,nbrRes:string,cin:Array<string> ,JourS:string):Observable<boolean>{
   let headers = new Headers();
   headers.append('content-type', 'application/x-www-form-urlencoded');
-  let send = JSON.stringify({'nbSalle':nbSalle,'nbRes':nbrRes,'cin':cin});
+  let send = JSON.stringify({'nbSalle':nbSalle,'nbRes':nbrRes,'cin':cin,'JourS':JourS});
   return this.http.post(this.uri+'createSeas',send,{headers:headers}).pipe(map((response:Response)=>{
     let code = response.json().code;
     if(code=='1'){
@@ -84,5 +88,20 @@ AjouterSea(nbSalle :string,nbrRes:string,cin:Array<string> ):Observable<boolean>
     }
   }));
 
+}
+
+CheckSeason(Jours:string):Observable<boolean>{
+  let headers = new Headers();
+  headers.append('content-type', 'application/x-www-form-urlencoded');
+  let send = JSON.stringify({'JourS':Jours});
+  return this.http.post(this.uri+'getSea',send,{headers:headers}).pipe(map((response:Response)=>{
+    let code = response.json().code;
+    if(code=='1'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }));
 }
 }

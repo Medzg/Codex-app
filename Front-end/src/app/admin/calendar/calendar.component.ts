@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog,MatDialogConfig } from '@angular/material';
 import { AddEventComponent } from './add-event/add-event.component';
 import { EditTimeComponent } from './edit-time/edit-time.component';
@@ -6,6 +6,10 @@ import { NewSessionComponent } from './new-session/new-session.component';
 import { DeleteSessionComponent } from './delete-session/delete-session.component';
 import { EditDateComponent } from './edit-date/edit-date.component';
 import {MethodsService} from '../../methods.service';
+import {jourN} from '../../jourN';
+import { GetSes } from '../../GetSes';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
@@ -18,27 +22,36 @@ export class CalendarComponent implements OnInit {
     type : null,
     dateD : null,
     dateF : null
-
   }
+
+  typeSes :boolean ;
   
-  constructor(public dialog: MatDialog, private meth:MethodsService)  {}
+  constructor(public dialog: MatDialog, private meth:MethodsService,public j :jourN,public monses:GetSes)  {}
 
   
   ngOnInit() {
 
-    let type = this.meth.GetType().subscribe(res=>{
+  this.meth.GetType();
+ 
+if(this.monses.type == 'DS'){
+  this.typeSes = false;
+}
+else{
+  this.typeSes = true;
+}
 
-      
-    });
+
+
+    
 
   }
-  public name = null;
+
+  public try = false;
   value = '';
-  event2(event:any){
-    this.name = event.target.id;
-    console.log(name)
-    }
-  event(){
+ 
+  event(event: any){
+    this.j.name= event.target.attributes.name.value;
+    console.log(this.j.name);
     const dialogConfig= new MatDialogConfig();
     dialogConfig.disableClose=true;
     dialogConfig.autoFocus=true; 
@@ -71,11 +84,29 @@ export class CalendarComponent implements OnInit {
     this.dialog.open(NewSessionComponent);
   }
 
+
   onDelete(){
     const dialogConfig= new MatDialogConfig();
     dialogConfig.disableClose=true;
     dialogConfig.autoFocus=true; 
     dialogConfig.width="100%";
     this.dialog.open(DeleteSessionComponent);
+  }
+  
+  check(Z:string){
+    
+    this.meth.CheckSeason(Z).subscribe(res=>{
+     if(res){
+       console.log('true');
+       return true;
+     }
+     
+     console.log('false');
+     
+ 
+
+    });
+  
+   
   }
 }

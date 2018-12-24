@@ -32,6 +32,8 @@ import { ProfessorComponent } from './professor/professor.component';
 import { EditProfComponent } from './professor/edit-prof/edit-prof.component';
 import { CalendarProfComponent } from './professor/calendar-prof/calendar-prof.component';
 import { EditDateComponent } from './admin/calendar/edit-date/edit-date.component';
+import { jourN } from './jourN';
+import { GetSes } from './GetSes';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,7 @@ import { EditDateComponent } from './admin/calendar/edit-date/edit-date.componen
     ]),
     AppRoutingModule
   ],
-  providers: [GardSerService,SecurityService,TableService,MethodsService],
+  providers: [GardSerService,SecurityService,TableService,MethodsService,jourN,GetSes],
   bootstrap: [AppComponent],
   entryComponents: [
     AddUserComponent,

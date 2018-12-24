@@ -1,12 +1,24 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-
+import { CalendarComponent } from '../calendar.component';
+import { calcBindingFlags } from '@angular/core/src/view/util';
+import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
+import { ChildActivationEnd } from '@angular/router';
+import { jourN } from 'src/app/jourN';
+import {MethodsService} from '../../../methods.service';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
+
+ 
+
+
+ 
+  
+
   nbr = new Array();
   nbrResponsables: number;
   values = '';
@@ -17,11 +29,15 @@ export class AddEventComponent implements OnInit {
     cin :  []  
   }
 
-  constructor(public dialogRef: MatDialogRef<AddEventComponent>) {
+
+  constructor(public dialogRef: MatDialogRef<AddEventComponent>,public j:jourN,private method : MethodsService) {
     
   }
+  test = this.j.name;
 
   ngOnInit() {
+    console.log(this.test);
+    
     
   }
   generate(){
@@ -42,7 +58,14 @@ export class AddEventComponent implements OnInit {
     
   }
   onSubmit(){
-    let z = JSON.stringify({'nbSalle':this.form.nbSalle,'nbRes':this.form.nbrRes,'array':this.form.cin});
-    console.log(z);
+   this.method.AjouterSea(this.form.nbSalle,this.form.nbrRes,this.form.cin,this.test).subscribe(res=>{
+     if(res){
+       console.log('works btich');
+     }
+     else{
+       console.log('nope bitch');
+     }
+   })
   }
+
 }

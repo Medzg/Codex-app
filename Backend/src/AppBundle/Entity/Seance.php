@@ -32,7 +32,7 @@ class Seance
     /**
      * @var string
      *
-     * @ORM\Column(name="jourS", type="string", length=255)
+     * @ORM\Column(name="JourSeance", type="string", length=255)
      */
 
 

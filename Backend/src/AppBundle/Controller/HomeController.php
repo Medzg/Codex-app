@@ -289,7 +289,7 @@ class HomeController extends Controller{
         
         $response= array(
             'code'=> 1,
-            'message'=>$data
+            'message'=>json_decode($data)
         );
         return new JsonResponse($response,200);
         }
@@ -309,14 +309,60 @@ class HomeController extends Controller{
         $sean = new Seance();
         $sean->setNbResp($Data->nbRes);
         $sean->setNbSalle($Data->nbSalle);
+        $sean->setJourSeance($Data->JourS);
+        $em->persist($sean);
+        $em->flush();
         $cins = $Data->cin;
-         foreach ($cins as $c){
-             $obj = new SCin();
+        $req = $em->getRepository(Seance::class)->findOneBy(["JourSeance"=>$Data->JourS]);
+        if($req){
+         $id = $req->getId();
+         foreach ($cins as $cin){
+             $x = new SCin();
+             $x->setCin($cin);
+             $x->setSID($id);
+             $x->setSID($id);
+             $em->persist($x);
+             $em->flush();
+            }
+        }
+        $response= array(
+            'code'=> 1,
+            'message'=>"works"
+        );
+
+
+        return new JsonResponse($response,200);
+
+    }
+
+    /**
+     * @Route("api/getSea",name="getSeance")
+     * @Method({"POST"})
+     */
+    public function GetSeanceAction(Request $request){
+
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->getRepository(Seance::class)->findOneBy(["JourSeance"=>$Data->JourS]);
+        if ($req){
+            $response = array(
+                'code'=>'1',
+                'message'=>'seance existe'
+            );
+            return new JsonResponse($response,200);
+        }
+        else{
+            $response = array(
+                'code'=>'0',
+                'message'=>'seance does not exisite'
+        );
+            return new JsonResponse($response,200);
 
         }
 
-
-
     }
+
 
 }
