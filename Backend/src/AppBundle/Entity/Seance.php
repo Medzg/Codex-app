@@ -25,9 +25,18 @@ class Seance
     /**
      * @var string
      *
-     * @ORM\Column(name="nbSalle", type="string", length=255)
+     * @ORM\Column(name="nbSalle", type="integer")
      */
     private $nbSalle;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nbSalleRes", type="integer")
+     */
+    private $nbSalleRes;
 
     /**
      * @var string
@@ -41,6 +50,36 @@ class Seance
     /**
      * @return string
      */
+    public function getNbHeur()
+    {
+        return $this->NbHeur;
+    }
+
+    /**
+     * @param string $NbHeur
+     */
+    public function setNbHeur($NbHeur)
+    {
+        $this->NbHeur = $NbHeur;
+    }
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nbHeur", type="integer")
+     */
+
+
+    private $NbHeur;
+
+    /**
+     * @return string
+     */
+
+
+
     public function getJourSeance()
     {
         return $this->JourSeance;
@@ -70,6 +109,22 @@ class Seance
     public function __construct()
     {
         $this->scin = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbSalleRes()
+    {
+        return $this->nbSalleRes;
+    }
+
+    /**
+     * @param string $nbSalleRes
+     */
+    public function setNbSalleRes($nbSalleRes)
+    {
+        $this->nbSalleRes = $nbSalleRes;
     }
 
 
@@ -102,7 +157,7 @@ class Seance
     /**
      * Get nbSalle
      *
-     * @return string
+     * @return int
      */
     public function getNbSalle()
     {

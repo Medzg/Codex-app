@@ -14,6 +14,9 @@ header('Access-Control-Max-Age: 100000');
 header('Access-Control-Allow-Headers:  Content-Type, Authorization, X-Requested-With');
 
 
+use AppBundle\Entity\Grade;
+use AppBundle\Entity\Professeur;
+use AppBundle\Entity\Reservation;
 use AppBundle\Entity\SCin;
 use AppBundle\Entity\Seance;
 use AppBundle\Entity\Test;
@@ -351,11 +354,23 @@ class HomeController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $req = $em->getRepository(Seance::class)->findOneBy(["JourSeance"=>$Data->JourS]);
         if ($req){
+            $nbsr= $req->getNbSalleRes();
+            $nbs = $req->getNbSalle();
+            if($nbsr <$nbs){
             $response = array(
                 'code'=>'1',
                 'message'=>'seance existe'
             );
             return new JsonResponse($response,200);
+        }
+        else{
+            $response = array(
+                'code'=>'2',
+                'message'=>'tout seasnce reserver'
+            );
+            return new JsonResponse($response,200);
+
+        }
         }
         else{
             $response = array(
@@ -367,6 +382,190 @@ class HomeController extends Controller{
         }
 
     }
+
+    /**
+     * @Route("api/createReserv",name="createReserv")
+     * @Method({"POST"})
+     */
+    public function CreateReservationAction (Request $request)
+
+    {
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $prof = $em->getRepository(Professeur::class)->findOneBy(["cin"=>$Data->cin]);
+        $gradeP = $prof->getGrade();
+        $grade = $em->getRepository(Grade::class)->findOneBy($gradeP);
+        $seance = $em->getRepository(Seance::class)->findOneBy(["seance"=>$Data->seance]);
+
+
+
+        if($prof->setHeurRes()< $grade->getHeure()) {
+            if ($seance->getNbHeur() > 0) {
+                $resv = new Reservation();
+                $resv->setCin($Data->cin);
+                $resv->setSeance($Data->seance);
+                $resv->setHeureDeResrva($Data->heur);
+                $em->persist($resv);
+                $he = $prof->getHeurRes();
+                $he = $he + 2;
+                $prof->setHeurRes($he);
+
+                $em->persist($prof);
+
+                $he=$seance->getNbHeur();
+                $he=$he-2;
+                $seance->setNbHeur($he);
+                $em->persist($seance);
+                $em->flush();
+                $response = array(
+                    'code' => '1',
+                    'message' => 'Reservation Terminer'
+                );
+                return new JsonResponse($response, 200);
+
+            }
+            else{
+                $response = array(
+                    'code' => '2',
+                    'message' => 'Seance Complete'
+                );
+                return new JsonResponse($response, 200);
+
+            }
+        }
+        else{
+            $response = array(
+                'code'=>'0',
+                'message'=>'Professeur Terminer Tous les heure'
+            );
+            return new JsonResponse($response,200);
+
+
+        }
+
+    }
+    /**
+     * @Route("api/GetAllRes",name="GetAllRes")
+     * @Method({"GET"})
+     */
+    public function GetAllReservationAction ()
+
+    {
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->getRepository(Reservation::class)->findAll();
+        if($res!=null){
+
+
+        $data = $this->get('jms_serializer')->serialize($res,'json');
+        $response= array(
+            'code'=>1,
+            'message'=>json_decode($data)
+        );
+        return new JsonResponse($response,200);
+        }
+        else{
+            $response= array(
+                'code'=>0,
+                'message'=>'pas resvervation'
+            );
+            return new JsonResponse($response,200);
+        }
+
+        }
+
+
+
+
+
+
+
+    /**
+     * @Route("api/GetByProf",name="GetByProf")
+     * @Method({"POST"})
+     */
+    public function GetByProfAction (Request $request)
+
+    {
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->getRepository(Reservation::class)->findBy(["cin"=>$Data->cin]);
+        $data = $this->get('jms_serializer')->serialize($res,'json');
+        if($data!=null){
+        $response= array(
+            'code'=>1,
+            'message'=>json_decode($data)
+        );
+        return new JsonResponse($response,200);
+        }
+        else{
+
+            $response= array(
+                'code'=>0,
+                'message'=>"Pas de professeur trouver avec cette cin"
+            );
+            return new JsonResponse($response,200);
+        }
+
+
+
+    }
+
+
+    /**
+     * @Route("api/GetBySeance",name="GetBySeance")
+     * @Method({"POST"})
+     */
+    public function GetBySeanceAction (Request $request)
+
+    {
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->getRepository(Reservation::class)->findBy(["seance"=>$Data->seance]);
+        $data = $this->get('jms_serializer')->serialize($res,'json');
+        if($data!=null){
+            $response= array(
+                'code'=>1,
+                'message'=>json_decode($data)
+            );
+            return new JsonResponse($response,200);
+        }
+        else{
+
+            $response= array(
+                'code'=>0,
+                'message'=>"Pas de professeur trouver avec cette cin"
+            );
+            return new JsonResponse($response,200);
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
