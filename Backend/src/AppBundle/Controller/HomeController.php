@@ -550,6 +550,39 @@ class HomeController extends Controller{
     }
 
 
+    /**
+     * @Route("api/DeleteReser",name="DeleteReser")
+     * @Method({"POST"})
+     */
+    public function DeleteReserAction (Request $request)
+    {
+        $Var = $request->getContent();
+        $Data = json_decode($Var);
+
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->getRepository(Reservation::class)->findOneBy(["cin"=>$Data->cin]);
+
+        if($res!=null){
+          $em->remove($res);
+          $em->flush();
+            $response= array(
+                'code'=>1,
+                'message'=>'Object deleted'
+            );
+            return new JsonResponse($response,200);
+        }
+        else{
+
+            $response= array(
+                'code'=>0,
+                'message'=>"pas de objet pour supprimer"
+            );
+            return new JsonResponse($response,200);
+        }
+
+
+
+    }
 
 
 
